@@ -5,13 +5,28 @@
 <div class="right menu">
     <div class="ui dropdown item">
     Account <i class="dropdown icon"></i>
-    <div class="menu">
-        <a class="item">Login</a>
-        <a class="item">Logout</a>
-        <%= link_to 'Sign up!', login_path, class:"item"%>
+        <div class="menu">
+            <% if logged_in? %>
+                <%= link_to 'Log out', logout_path, class:"ui item primary orange button", method: :delete, data: { confirm: "Do you want to log out?"} %>
+            <% else %>
+                <a class="item">Login</a>
+                <%= link_to 'Sign up!', login_path, class:"item"%>
+            <% end %>
+        </div>
     </div>
-    </div>
+
     <div class="item">
-        <%= link_to 'Sign up!', login_path, class:"ui primary button"%>
+        <% if logged_in? %>
+            <%= link_to 'Log out', logout_path, class:"ui orange button", method: :delete, data: { confirm: "Do you want to log out?"} %>
+        <% else %>
+            <%= link_to 'Log in', login_path, class:"ui primary button"%>
+        <% end %>
     </div>
+
+    <div class="item">
+        <% if !logged_in? %>
+            <%= link_to 'Sign up!', login_path, class:"ui primary button" %>
+        <% end %>
+    </div>
+
 </div>

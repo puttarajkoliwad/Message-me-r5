@@ -1,32 +1,32 @@
 <h1 class="middle text-center">Welocome to MessageMe - <em>a complete Chat App</em></h1>
 
 <h2 class="ui center aligned medium icon header">
-  <i class="circular orange power icon"></i>
+  <i class="circular orange power off tiny icon"></i>
   Login to continue
 </h2>
 
 <div class="ui placeholder segment">
   <div class="ui two column very relaxed stackable grid">
     <div class="column">
-      <div class="ui form">
+      <%= form_for(:session, html: {class: "ui form", role: "form"}, url: login_path ) do |f|  %>
         <div class="field">
-          <label>Username</label>
+          <%= f.label :username, "Username" %>
           <div class="ui left icon input">
-            <input type="text" placeholder="Username">
+            <%= f.text_field :username, placeholder: "Username" %>
             <i class="user icon"></i>
           </div>
         </div>
+
         <div class="field">
-          <label>Password</label>
+          <%= f.label :password, "Password" %>
           <div class="ui left icon input">
-            <input type="password">
+            <%= f.password_field :password, placeholder: "Password" %>
             <i class="lock icon"></i>
           </div>
         </div>
-        <button class="ui orange button">
-            Login
-        </button>
-      </div>
+        
+        <%= f.button "Login", class: "ui orange button"%>
+      <% end %>
     </div>
     <div class="middle aligned column">
       <div class="ui orange button">
@@ -39,4 +39,3 @@
     Or
   </div>
 </div>
-
